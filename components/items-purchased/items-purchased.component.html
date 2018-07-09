@@ -1,0 +1,35 @@
+<div class="gl-items-purchased" ng-cloak>
+    <h1>Items Purchased</h1>
+    <div class="purchased-items-header">
+        <span>Total Items: {{ $ctrl.itemsPurchased.length }}</span>
+    </div>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Cost</th>
+                <th scope="col">Type</th>
+                <th scope="col">Expires</th>
+                <th>Quantity</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in $ctrl.itemsPurchased">
+                <th scope="row">{{ $index + 1}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.cost}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.expiration}}</td>
+                <td>{{item.quantity}}</td>
+                <td><button type="button" class="btn btn-danger" ng-click="$ctrl.removePurchasedItem($index)">Remove</button></td>
+            </tr>
+            <tr ng-if="$ctrl.itemsPurchased.length == 0">
+                <td colspan="7">
+                    Empty Purchased Grocery List. Use the top nav bar to navigate to needed items.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
